@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="vartag">
+	<h3>Produtos:</h3>
+</div>
+
+<script>
+	var tagCount = 0;
+	var tags = "";
+	for(var i = 1; i <= 5; i++){
+    	tags += "<p>Produto: " + i + "</p>";
+        tagCount += 1;
+    }
+    document.getElementById("vartag").innerHTML += tags;
+    alert("Produtos exibidos: " + tagCount);
+</script>
+
+</body>
+</html>
