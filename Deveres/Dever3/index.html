@@ -1,0 +1,72 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <script>
+            var name = prompt("Qual seu nome?", "");
+            alert("Olá, " + name + "!");
+
+            var anoNascimento = prompt("Em qual ano você nasceu?", "");
+            anoNascimento = Number(anoNascimento);
+            var anoAtual = new Date().getFullYear();
+            alert("Você tem " + (anoAtual-anoNascimento) + " anos");
+
+            var tamanhoDaFaceQuadrado = prompt("Considerando a existencia de um quadrado qualquer, diga um tamanho para cada face (cm):", "1");
+            tamanhoDaFaceQuadrado = tamanhoDaFaceQuadrado.replace("cm", "");
+            tamanhoDaFaceQuadrado = Number(tamanhoDaFaceQuadrado);
+            var perimetroQuadrado = tamanhoDaFaceQuadrado * 4;
+            alert("O perimetro do quadrado é de " + perimetroQuadrado + "cm");
+
+            var raioCirculo = prompt("Considerando a existencia de um circulo qualquer, diga um raio para ele (cm):", "1");
+            raioCirculo = raioCirculo.replace("cm", "");
+            raioCirculo = Number(raioCirculo);
+            var areaCirculo = Math.PI * (raioCirculo * raioCirculo);
+            alert("A area do circulo é de " + areaCirculo + "cm");
+
+            var distancia = prompt("Considerando a existencia de duas cidades qualquer, diga a distancia entre elas (km)", "5");
+            distancia = distancia.replace("km", "");
+            distancia = Number(distancia);
+            var horas = prompt("Seguindo o raciocinio das cidades, em quantas horas você quer chegar até lá?(horas)", "2");
+            horas = horas.replace("hr", "");
+            horas = Number(horas);
+            var velocidade = distancia/horas;
+            alert("Para chegar a tempo até a outra cidade você precisará andar á " + velocidade + "km/h");
+
+            var dolares = prompt("Digite uma quantia em dolares há ser transformada em euros:", "5");
+            dolares = Number(dolares);
+            var valorDoEuroEmDolar = 0.88;
+            var euros = dolares * valorDoEuroEmDolar;
+            alert(dolares + " dolares, viraram " + euros + " euros");
+
+            var gbPendrive = prompt("Considerando um pendrive qualquer, diga a quantidade de espaço disponivel nele (gigabytes, GB)", "16");
+            gbPendrive = gbPendrive.replace("gb", "");
+            gbPendrive = Number(gbPendrive);
+            var fileSize = 820;
+            var maxFiles = (gbPendrive*1000) / fileSize;
+            alert("Este pendrive consegue armazenar " + maxFiles + " arquivos com o tamanho de " + fileSize + "mb cada");
+
+            var dinheiroNaCarteira = prompt("Quanto dinheiro você tem na carteira?", "");
+            dinheiroNaCarteira = Number(dinheiroNaCarteira);
+            var precoDoChocolate = prompt("Quanto custa a barra de chocolate?", "");
+            var maxChocolates = dinheiroNaCarteira/precoDoChocolate;
+            maxChocolates = Math.round(maxChocolates);
+            var trocoChocolates = dinheiroNaCarteira%precoDoChocolate;
+            alert("Você consegue comprar " + maxChocolates + " e receberia " + trocoChocolates + " de troco");
+
+            var numero = prompt("Informe um numero de 3 digitos:", "123");
+            var numeroAoContrario = "";
+            for (var i = numero.length - 1; i >= 0; i--) { 
+                numeroAoContrario += numero[i];
+            }
+            alert("O numero ao contrario é: " + numeroAoContrario);
+
+            var numeroPar = prompt("Informe um numero:", "0");
+            var par = numeroPar%2==0;
+            alert("O numero informado é " + (par ? "Par" : "Impar"));
+
+
+
+
+        </script>
+    </body>
+</html>
