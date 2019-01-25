@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .type-box p:not(:first-child) {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="type-box">
+            <p></p>
+            <p>Estou testando isso</p>
+            <p>Não sei se vai funcionar</p>
+            <p>Mas tanto faz...</p>
+        </div>
+        <br>
+        <div class="type-box">
+            <p></p>
+            <p>Mas que coisa doida</p>
+            <p>Muito louco como isso funciona</p>
+            <p>É... está pronto</p>
+        </div>
+        <script>
+            /*var typeBox = document.getElementById("type-box");
+            var toReplace = typeBox.firstElementChild;
+            console.log("Result: " + toReplace.innerHTML);*/
+
+            var map = new Map();
+
+
+            var typeBoxs = document.getElementsByClassName("type-box");
+            for(var i = 0; i < typeBoxs.length; i++){
+                var typeBox = typeBoxs[i];
+                var toReplace = typeBox.firstElementChild;
+
+                typeWriter(typeBox, toReplace);
+            }
+
+            function typeWriter(typeBox, target){
+
+                var charPos = 0;
+                var textPos = 0;
+                var txts = [];
+                for(var ele of map.entries()){
+                    if(ele[0] == typeBox) {
+                        charPos = ele[1].charPos;
+                        textPos = ele[1].textPos;
+                        txts = ele[1].textsToWrite;
+                        break;
+                    }
+                }
+
+                if(txts.length == 0){
+                    var childNodes = typeBox.childNodes;
+                    for(var i = 0; i < childNodes.length; i++){
+                        if(i%2!=0){
+                            if(i != 1){
+                                txts.push(childNodes[i].innerHTML);
+                            }
+                        }
+                    }
+                }
+
+                var txt = txts[textPos];
+
+                if (charPos < txt.length) {
+                    if(charPos == 0){
+                        target.innerHTML = "";
+                    }
+                    target.innerHTML += txt.charAt(charPos);
+                    charPos++;
+                    map.set(typeBox, { charPos: charPos, textsToWrite: txts, textPos: textPos });
+                    setTimeout(function(){typeWriter(typeBox, target)}, 50);
+                } else {
+                    charPos = 0;
+                    if(txts.length > textPos+1){
+                        textPos += 1;
+                    } else {
+                        textPos = 0;
+                    }
+                    map.set(typeBox, { charPos: charPos, textsToWrite: txts, textPos: textPos });
+                    setTimeout(function(){typeWriter(typeBox, target)}, 1000);
+                }
+            }
+
+        </script>
+    </body>
+</html>
