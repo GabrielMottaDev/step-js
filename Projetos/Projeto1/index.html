@@ -8,38 +8,51 @@
         </style>
     </head>
     <body>
-        <div class="type-box">
+        <div class="type-box" speed="20;4000">
             <p></p>
-            <p>Estou testando isso</p>
-            <p>Não sei se vai funcionar</p>
-            <p>Mas tanto faz...</p>
+            <p>Com essa FrameWork, você pode criar animações de escrita, pode alterar a velocidade de escrita e de troca até mesmo em quanto está sendo executada a animação</p>
+            <p>O céu é o limite!</p>
+        </div>
+        <div class="type-box" speed="5;6000">
+            <p></p>
+            <p>Cada animação é divida em divs e suas velocidades e textos são tratados de acordo como foram criadas!</p>
+            <p>Desta forma pode-se utilizar a framework com codigos customizados que modifiquem as propriedades das divs que já estão sendo animadas!</p>
         </div>
         <br>
-        <div class="type-box">
-            <p></p>
-            <p>Mas que coisa doida</p>
-            <p>Muito louco como isso funciona</p>
-            <p>É... está pronto</p>
-        </div>
+        <!--
+            <script>
+                setTimeout(function (){
+                    document.getElementsByClassName("type-box")[0].innerHTML += "<p>TESTANDO AAA</p>";
+                }, 3000);
+            </script>
+        -->
         <script>
             var map = new Map();
 
+            setTimeout(function(){
+                var typeBoxs = document.getElementsByClassName("type-box");
+                for(var i = 0; i < typeBoxs.length; i++){
+                    var typeBox = typeBoxs[i];
+                    var attribute = typeBox.getAttribute("speed").split(";");
+                    var toReplace = typeBox.firstElementChild;
+                    typeWriter(i, toReplace, Number(attribute[0]), Number(attribute[1]));
+                }
+            }, 1000);
 
-            var typeBoxs = document.getElementsByClassName("type-box");
-            for(var i = 0; i < typeBoxs.length; i++){
-                var typeBox = typeBoxs[i];
-                var toReplace = typeBox.firstElementChild;
+            function typeWriter(typeBox, target, typeSpeed, switchSpeed){
+                var numTypeBox = typeBox;
+                typeBox = document.getElementsByClassName("type-box")[numTypeBox];
+                target = typeBox.firstElementChild;
+                var attribute = typeBox.getAttribute("speed").split(";");
 
-                typeWriter(typeBox, toReplace);
-            }
-
-            function typeWriter(typeBox, target){
+                typeSpeed = Number(attribute[0]);
+                switchSpeed = Number(attribute[1]);
 
                 var charPos = 0;
                 var textPos = 0;
                 var txts = [];
                 for(var ele of map.entries()){
-                    if(ele[0] == typeBox) {
+                    if(ele[0] == numTypeBox) {
                         charPos = ele[1].charPos;
                         textPos = ele[1].textPos;
                         txts = ele[1].textsToWrite;
@@ -47,15 +60,24 @@
                     }
                 }
 
-                if(txts.length == 0){
-                    var childNodes = typeBox.childNodes;
-                    for(var i = 0; i < childNodes.length; i++){
-                        if(i%2!=0){
-                            if(i != 1){
-                                txts.push(childNodes[i].innerHTML);
-                            }
+                var preTxts = [];
+                var preChildNodes = typeBox.childNodes;
+                for(var i = 0; i < preChildNodes.length; i++){
+                    if(i%2!=0){
+                        if(i!=1){
+                            preTxts.push(preChildNodes[i].innerHTML);
                         }
                     }
+                }
+
+
+                //TODO: ARRAY EQUAL
+                if(!isEqual(txts, preTxts)){
+                    console.log("");
+                    console.log(txts);
+                    console.log(preTxts);
+                    console.log("");
+                    txts = preTxts;
                 }
 
                 var txt = txts[textPos];
@@ -66,8 +88,8 @@
                     }
                     target.innerHTML += txt.charAt(charPos);
                     charPos++;
-                    map.set(typeBox, { charPos: charPos, textsToWrite: txts, textPos: textPos });
-                    setTimeout(function(){typeWriter(typeBox, target)}, 50);
+                    map.set(numTypeBox, { charPos: charPos, textsToWrite: txts, textPos: textPos });
+                    setTimeout(function(){typeWriter(numTypeBox, target, typeSpeed, switchSpeed)}, typeSpeed);
                 } else {
                     charPos = 0;
                     if(txts.length > textPos+1){
@@ -75,9 +97,21 @@
                     } else {
                         textPos = 0;
                     }
-                    map.set(typeBox, { charPos: charPos, textsToWrite: txts, textPos: textPos });
-                    setTimeout(function(){typeWriter(typeBox, target)}, 1000);
+                    map.set(numTypeBox, { charPos: charPos, textsToWrite: txts, textPos: textPos });
+                    setTimeout(function(){typeWriter(numTypeBox, target, typeSpeed, switchSpeed)}, switchSpeed);
                 }
+            }
+
+            function isEqual (array1, array2) {
+                var str1 = "";
+                for(var str in array1){
+                    str1+=str;
+                }
+                var str2 = "";
+                for(var str in array2){
+                    str2+=str;
+                }
+                return str1==str2;
             }
 
         </script>
