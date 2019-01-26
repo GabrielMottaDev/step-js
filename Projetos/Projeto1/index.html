@@ -2,30 +2,63 @@
 <html>
     <head>
         <style>
-            .type-box p:not(:first-child) {
+            .type-box *:not(:first-child) {
                 display: none;
+            }
+
+            #toleft {
+                display: flex;
+                justify-content: flex-start;
+            }
+
+            #tocenter {
+                display: flex;
+                justify-content: center;
+            }
+
+            #toright {
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .type-box {
+                font-size: 20pt;
+                padding: 20px;
+                padding-left: 20px;
+                padding-right: 20px;
+                background-color: lightgray;
+                margin-bottom: 50px;
             }
         </style>
     </head>
     <body>
-        <div class="type-box" speed="20;4000">
-            <p></p>
-            <p>Com essa Library, você pode criar animações de escrita, pode alterar a velocidade de escrita e de troca até mesmo em quanto está sendo executada a animação</p>
-            <p>O céu é o limite!</p>
+        <div id="toleft" class="type-box" speed="20;4000">
+            <a></a>
+            <a>Com essa Library, você pode criar animações de escrita, pode alterar a velocidade de escrita e de troca até mesmo em quanto está sendo executada a animação</a>
+            <a>O céu é o limite!</a>
         </div>
-        <div class="type-box" speed="5;6000">
-            <p></p>
-            <p>Cada animação é divida em divs e suas velocidades e textos são tratados de acordo como foram criadas!</p>
-            <p>Desta forma pode-se utilizar esta library com codigos customizados que modifiquem as propriedades das divs que já estão sendo animadas!</p>
+
+        <div id="tocenter" class="type-box" speed="5;6000">
+            <a></a>
+            <a>Cada animação é divida em divs e suas velocidades e textos são tratados de acordo como foram criadas!</a>
+            <a>Desta forma pode-se utilizar esta library com codigos customizados que modifiquem as propriedades das divs que já estão sendo animadas!</a>
         </div>
+
+        <div id="toright" class="type-box" speed="20;4000">
+            <a></a>
+            <a>Criado por: Gabriel Motta</a>
+            <a href="https://github.com/GabrielMottaDev">Github: @GabrielMottaDev</a>
+            <a href="https://twitter.com/gabrielmottadev">Twitter: @gabrielmottadev</a>
+        </div>
+
         <br>
         <!--
-            <script>
-                setTimeout(function (){
-                    document.getElementsByClassName("type-box")[0].innerHTML += "<p>TESTANDO AAA</p>";
-                }, 3000);
-            </script>
-        -->
+<script>
+setTimeout(function (){
+document.getElementsByClassName("type-box")[0].innerHTML += "<p>TESTANDO AAA</p>";
+}, 3000);
+</script>
+-->
         <script>
             var map = new Map();
 
@@ -65,7 +98,7 @@
                 for(var i = 0; i < preChildNodes.length; i++){
                     if(i%2!=0){
                         if(i!=1){
-                            preTxts.push(preChildNodes[i].innerHTML);
+                            preTxts.push([preChildNodes[i].getAttribute("href"), preChildNodes[i].innerHTML]);
                         }
                     }
                 }
@@ -80,11 +113,16 @@
                     txts = preTxts;
                 }
 
-                var txt = txts[textPos];
+                var txt = txts[textPos][1];
 
                 if (charPos < txt.length) {
                     if(charPos == 0){
                         target.innerHTML = "";
+                        if(txts[textPos][0] != null){
+                            target.setAttribute("href", txts[textPos][0]);
+                        } else {
+                            target.removeAttribute("href");
+                        }
                     }
                     target.innerHTML += txt.charAt(charPos);
                     charPos++;
