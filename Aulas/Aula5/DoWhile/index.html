@@ -1,0 +1,34 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <input id="numero" type="number">
+        <button onclick="generateResult()">Enviar</button>
+        <br>
+        <a id="result"></a>
+
+        <script>
+            document.getElementById("numero").addEventListener("keydown", function(event){
+                if(event.code == "Enter"){
+                    generateResult();
+                }
+            });
+
+            function generateResult(){
+                var numero = document.getElementById("numero").value;
+                numero = Number(numero);
+
+                var resultado = "";
+
+                do {
+                    resultado += numero + "<br>";
+                    numero--;
+                } while(numero > 0);
+
+                document.getElementById("result").innerHTML = resultado;
+            }
+
+
+        </script>
+    </body>
+</html>

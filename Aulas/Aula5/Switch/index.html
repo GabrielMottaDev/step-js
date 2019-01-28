@@ -1,0 +1,42 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <input id="numero" type="number">
+        <button onclick="generateResult()">Enviar</button>
+        <br>
+        <a id="result"></a>
+
+        <script>
+            document.getElementById("numero").addEventListener("keydown", function(event){
+                if(event.code == "Enter"){
+                    generateResult();
+                }
+            });
+            
+            function generateResult(){
+                var numero = document.getElementById("numero").value;
+                numero = Number(numero);
+
+                var resultado = "";
+
+                switch(numero){
+                    case 1:
+                        resultado = "Açao1";
+                        break;
+                    case 2:
+                        resultado = "Açao2";
+                        break;
+                    case 3:
+                        resultado = "Açao3";
+                        break;
+                    default:
+                        resultado = "Nenhuma ação";
+                        break;
+                }
+
+                document.getElementById("result").innerHTML = resultado;
+            }
+        </script>
+    </body>
+</html>

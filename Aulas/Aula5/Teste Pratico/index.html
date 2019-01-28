@@ -1,0 +1,209 @@
+<html>
+    <head>
+    </head>
+    <body>
+        1-
+        <input id="ex1numero1" type="number">
+        <input id="ex1numero2" type="number">
+        <button onclick="ex1()">Enviar</button>
+        <br>
+        <a id="ex1result"></a><br><br>
+
+        2-
+        <input id="ex2numero1" type="number">
+        <input id="ex2numero2" type="number">
+        <button onclick="ex2()">Enviar</button>
+        <br>
+        <a id="ex2result"></a><br><br>
+
+        3-
+        <input id="ex3numero1" type="number">
+        <button onclick="ex3()">Enviar</button>
+        <br>
+        <a id="ex3result"></a><br><br>
+
+        4-
+        <input id="ex4numero1" type="number">
+        <button onclick="ex4()">Enviar</button>
+        <br>
+        <a id="ex4result"></a><br><br>
+
+        5-
+        <input id="ex5numero1" type="number">
+        <input id="ex5numero2" type="number">
+        <input id="ex5numero3" type="number">
+        <input id="ex5numero4" type="number">
+        <input id="ex5numero5" type="number">
+        <input id="ex5numero6" type="number">
+        <input id="ex5numero7" type="number">
+        <input id="ex5numero8" type="number">
+        <input id="ex5numero9" type="number">
+        <input id="ex5numero10" type="number">
+        <button onclick="ex5()">Enviar</button>
+        <br>
+        <a id="ex5result"></a><br><br>
+        
+        6-
+        <input id="ex6numero1" type="number">
+        <input id="ex6sinal" type="text">
+        <input id="ex6numero2" type="number">
+        <button onclick="ex6()">Enviar</button>
+        <br>
+        <a id="ex6result"></a><br><br>
+        
+        7-
+        <input id="ex7numero1" type="number">
+        <input id="ex7numero2" type="number">
+        <button onclick="ex7()">Enviar</button>
+        <br>
+        <a id="ex7result"></a><br><br>
+
+        <script>
+            function ex1(){
+                var numero1 = document.getElementById("ex1numero1").value;
+                numero1 = Number(numero1);
+
+                var numero2 = document.getElementById("ex1numero2").value;
+                numero2 = Number(numero2);
+
+                var resultado = 0;
+
+                while(numero1 <= numero2){
+                    resultado+=numero2;
+                    numero2--;
+                }
+
+                document.getElementById("ex1result").innerHTML = resultado;
+            }
+
+            function ex2(){
+                var numero1 = document.getElementById("ex2numero1").value;
+                numero1 = Number(numero1);
+
+                var numero2 = document.getElementById("ex2numero2").value;
+                numero2 = Number(numero2);
+
+                var resultado = 0;
+
+                var resto;
+
+                do {
+                    resto = numero1 % numero2;
+
+                    numero1 = numero2;
+                    numero2 = resto;
+                    resultado = numero1;
+                } while (resto != 0);
+
+                document.getElementById("ex2result").innerHTML = resultado;
+            }
+
+            function ex3(){
+                var numero1 = document.getElementById("ex3numero1").value;
+                numero1 = Number(numero1);
+
+                var resultado = "";
+
+                for(var i = numero1; i > 1; i--){
+                    if(numero1%i==0){
+                        if(resultado != ""){
+                            resultado += ", ";
+                        }
+                        resultado+=i;
+                    }
+                }
+
+                document.getElementById("ex3result").innerHTML = resultado;
+            }
+
+            function ex4(){
+                var numero1 = document.getElementById("ex4numero1").value;
+                numero1 = String(numero1);
+
+                var resultado = numero1.length;
+
+                document.getElementById("ex4result").innerHTML = resultado;
+            }
+
+            function ex5(){
+                
+                var positive = 0;
+                var negative = 0;
+                var zero = 0;
+                var even = 0;
+                var odd = 0;
+
+                for(var i = 1; i <= 10; i++){
+                    var numero = document.getElementById("ex5numero" + i).value;
+                    numero = Number(numero);
+                    
+                    if(numero >= 0){
+                        positive++;
+                    } else {
+                        negative++;
+                    }
+                    if(numero == 0){
+                        zero++;
+                    }
+                    if(numero%2==0){
+                        even++;
+                    }else{
+                        odd++;
+                    }
+                    console.log(numero);
+                }
+
+                var resultado = "Positive: " + positive + ", Negative: " + negative  + ", Zero: " + zero + ", Even: " + even + ", Odd: " + odd;
+
+                document.getElementById("ex5result").innerHTML = resultado;
+            }
+            
+            function ex6(){
+                var numero1 = document.getElementById("ex6numero1").value;
+                numero1 = Number(numero1);
+                var sinal = document.getElementById("ex6sinal").value;
+                var numero2 = document.getElementById("ex6numero2").value;
+                numero2 = Number(numero2);
+                
+                var resultado = 0;
+                
+                switch(sinal) {
+                    case "*":
+                        resultado = numero1*numero2;
+                        break;
+                    case "/":
+                        resultado = numero1/numero2;
+                        break;
+                    case "+":
+                        resultado = numero1+numero2;
+                        break;
+                    case "-":
+                        resultado = numero1-numero2;
+                        break;
+                    default:
+                        resultado = "Erro";
+                        break;
+                }
+
+                document.getElementById("ex6result").innerHTML = resultado;
+            }
+            
+            function ex7(){
+                // TODO: TERMINAR A QUESTAO 7
+                var numero1 = document.getElementById("ex7numero1").value;
+                numero1 = String(numero1);
+                
+                var numero2 = document.getElementById("ex7numero2").value;
+                numero2 = Number(numero2);
+
+                var resultado = "";
+                
+                
+
+                document.getElementById("ex7result").innerHTML = resultado;
+            }
+
+
+        </script>
+    </body>
+</html>
