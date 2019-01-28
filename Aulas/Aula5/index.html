@@ -1,0 +1,27 @@
+<html>
+    <head>
+    </head>
+    <body>
+        First name: <input id="fname" type="text">
+        Last name: <input id="lname" type="text">
+        Data de nascimento: <input id="nasci" type="date">
+        <button onclick="confirmBtn()">Enviar</button>
+        <hr>
+        <a id="result"></a>
+       
+        <script>
+            function confirmBtn(){
+                var fname = document.getElementById("fname").value;
+                var lname = document.getElementById("lname").value;
+                var nasci = document.getElementById("nasci").value;
+                
+                setResult("Olá " + fname + " " + lname + ", você faz aniversário em " + nasci);
+                return;
+            }
+            
+            function setResult(result) {
+                document.getElementById("result").innerHTML = result;
+            }
+        </script>
+    </body>
+</html>
