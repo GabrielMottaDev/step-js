@@ -42,7 +42,7 @@
         <button onclick="ex5()">Enviar</button>
         <br>
         <a id="ex5result"></a><br><br>
-        
+
         6-
         <input id="ex6numero1" type="number">
         <input id="ex6sinal" type="text">
@@ -50,13 +50,28 @@
         <button onclick="ex6()">Enviar</button>
         <br>
         <a id="ex6result"></a><br><br>
-        
+
         7-
         <input id="ex7numero1" type="number">
         <input id="ex7numero2" type="number">
         <button onclick="ex7()">Enviar</button>
         <br>
         <a id="ex7result"></a><br><br>
+
+        8-
+        <button onclick="ex8()">Enviar</button>
+        <br>
+        <a id="ex8result"></a><br><br>
+
+        9-
+        <button onclick="ex9()">Enviar</button>
+        <br>
+        <a id="ex9result"></a><br><br>
+        
+        10-
+        <button onclick="ex10()">Enviar</button>
+        <br>
+        <a id="ex10result"></a><br><br>
 
         <script>
             function ex1(){
@@ -126,7 +141,7 @@
             }
 
             function ex5(){
-                
+
                 var positive = 0;
                 var negative = 0;
                 var zero = 0;
@@ -136,7 +151,7 @@
                 for(var i = 1; i <= 10; i++){
                     var numero = document.getElementById("ex5numero" + i).value;
                     numero = Number(numero);
-                    
+
                     if(numero >= 0){
                         positive++;
                     } else {
@@ -157,16 +172,16 @@
 
                 document.getElementById("ex5result").innerHTML = resultado;
             }
-            
+
             function ex6(){
                 var numero1 = document.getElementById("ex6numero1").value;
                 numero1 = Number(numero1);
                 var sinal = document.getElementById("ex6sinal").value;
                 var numero2 = document.getElementById("ex6numero2").value;
                 numero2 = Number(numero2);
-                
+
                 var resultado = 0;
-                
+
                 switch(sinal) {
                     case "*":
                         resultado = numero1*numero2;
@@ -187,20 +202,63 @@
 
                 document.getElementById("ex6result").innerHTML = resultado;
             }
-            
+
             function ex7(){
-                // TODO: TERMINAR A QUESTAO 7
                 var numero1 = document.getElementById("ex7numero1").value;
                 numero1 = String(numero1);
-                
+
                 var numero2 = document.getElementById("ex7numero2").value;
                 numero2 = Number(numero2);
 
                 var resultado = "";
-                
-                
+
+                for(var i = 0; i < numero1.length; i++){
+                    resultado += Number(numero1[i])+numero2;
+                }
 
                 document.getElementById("ex7result").innerHTML = resultado;
+            }
+
+            var ex8Var = "";
+            function ex8(){
+                if(ex8Var == ""){
+                    ex8Var = "Domingo";
+                } else if(ex8Var == "Domingo"){
+                    ex8Var = "Segunda";
+                } else if(ex8Var == "Segunda"){
+                    ex8Var = "Terça";
+                } else if(ex8Var == "Terça"){
+                    ex8Var = "Quarta";
+                } else if(ex8Var == "Quarta"){
+                    ex8Var = "Quinta";
+                } else if(ex8Var == "Quinta"){
+                    ex8Var = "Sexta";
+                } else if(ex8Var == "Sexta"){
+                    ex8Var = "Sabado";
+                } else if(ex8Var == "Sabado"){
+                    ex8Var = "Domingo";
+                }
+
+                document.getElementById("ex8result").innerHTML = ex8Var + ". Clique para ver o dia da semana seguinte";
+            }
+            
+            function ex9(){
+                var resultado = "";
+                for(var i = 2; i <= 9; i++){
+                    for(var i2 = 1; i2 <= 10; i2++){
+                        if(resultado != ""){
+                            resultado += "<br>";
+                        }
+                        resultado += i + "x" + i2 + "=" + (i*i2);
+                    }
+                    resultado += "<br>";
+                }
+                
+                document.getElementById("ex9result").innerHTML = resultado;
+            }
+            
+            function ex10(){
+                //SEI FAZER NAO .-.
             }
 
 
