@@ -1,0 +1,207 @@
+<html>
+    <head>
+    </head>
+    <body>
+
+        <script>
+            {// PERGUNTA 1
+                var idade = prompt("Quantos anos você tem?", "");
+                idade = Number(idade);
+                var idadeResult = "";
+                if(idade < 0){
+                    idadeResult = "Feto";
+                } else if (idade > 0 && idade < 4) {
+                    idadeResult = "Bebe";
+                } else if(idade >= 4 && idade < 12) {
+                    idadeResult = "Criança";
+                } else if(idade >= 12 && idade < 18){
+                    idadeResult = "Adolecente";
+                } else if(idade >= 18 && idade < 60){
+                    idadeResult = "Adulto";
+                } else if (idade >= 60){
+                    idadeResult = "Ancião"
+                }
+                alert("Você é um(a) " + idadeResult);
+            }
+            {// PERGUNTA 2
+                var numero = prompt("Escolha um numero de 0 a 9:", "");
+                numero = Number(numero);
+                var result = "";
+                switch (numero){
+                    case 0:
+                        result = ")";
+                        break;
+                    case 1:
+                        result = "!";
+                        break;
+                    case 2:
+                        result = "@";
+                        break;
+                    case 3:
+                        result = "#";
+                        break;
+                    case 4:
+                        result = "$";
+                        break;
+                    case 5:
+                        result = "%";
+                        break;
+                    case 6:
+                        result = "^";
+                        break;
+                    case 7:
+                        result = "&";
+                        break;
+                    case 8:
+                        result = "*";
+                        break;
+                    case 9:
+                        result = "(";
+                        break;
+                    default:
+                        result = "Error";
+                        break;
+                }
+                alert(result != "Error" ? ("Caractere especial correspondente: " + result) : "Error");
+            }
+            {// PERGUNTA 3
+                var numero = prompt("Digite um numero com 3 digitos:", "123");
+                numero = String(numero);
+
+                var hasEqualNumbers = false;
+                for(var i1 = 0; i1 < numero.length; i1++){
+                    var numero1 = numero[i1];
+                    for(var i2 = 0; i2 < numero.length; i2++){
+                        var numero2 = numero[i2];
+                        if(numero1 == numero2){
+                            hasEqualNumbers = true;
+                            break;
+                        }
+                    }
+                }
+
+                alert(hasEqualNumbers ? "Contem numeros repetidos" : "Nenhum numero se repete");
+            }
+            {// PERGUNTA 4
+                var ano = prompt("Digite um ano:", "2019");
+                ano = Number(ano);
+                alert(((ano%400==0||ano%4==0) && ano%100!=0) ? "O ano é bissexto" : "O ano não é bissexto");
+            }
+            {// PERGUNTA 5
+                var numero = prompt("Digite um numero de 5 digitos:", "12345");
+                numero = String(numero);
+                var reverseNumero = "";
+                for(var i = numero.length-1; i >= 0; i--){
+                    reverseNumero += numero[i];
+                }
+                alert(numero==reverseNumero?"Este numero é um palindromo":"Este numero não é um palindromo");
+            }
+            {// PERGUNTA 6
+                var moeda = prompt("Digite a quantidade de dolares:", "20");
+                var choose = prompt("Para qual moeda deseja converter (EUR, UAN, AZN)?", "EUR");
+                choose = choose.toLowerCase();
+                switch (choose){
+                    case "eur":
+                        moeda *= 0.88;
+                        break;
+                    case "uan":
+                        moeda *= 6.75;
+                        break;
+                    case "azn":
+                        moeda *= 1.70;
+                        break;
+                    default:
+                        break;
+                }
+                alert("Você ficará com " + moeda + " " + choose.toUpperCase());
+            }
+            {// PERGUNTA 7
+                var amount = prompt("Qual o preço da compra?", "5");
+                amount = Number(amount);
+
+                var originalAmount = amount;
+                var discountAmount = 0;
+
+                var discount = 0;
+                if(amount >= 200 && amount < 300){
+                    discount = 3;
+                } else if(amount >= 300 && amount < 500){
+                    discount = 5;
+                } else if(amount >= 500){
+                    discount = 7;
+                }
+
+                var result = "";
+                if(discount != 0){
+                    discountAmount = (discount * amount)/100
+                    amount -= discountAmount;
+                }
+                result += "Total da compra: " + amount + ". Você economizará: " + discountAmount + ", que correspondem a " + discount + "% da compra";
+                alert(result);    
+            }
+            {// PERGUNTA 8
+                var circle = prompt("Diga o comprimento do circulo:", "5");
+                circle = Number(circle);
+
+                var square = prompt("Diga o perimetro do quadrado:", "20");
+                square = Number(square);
+                square = square / 4;
+
+
+                alert(circle <= square ? "O circulo cabe dentro do quadrado" : "O circulo não cabe dentro do quadrado");
+            }
+            {// PERGUNTA 9
+                var points = 0;
+                var question1 = prompt("Quantas questoes tem esta pagina: 1: 5 | 2: 10 | 3: 15", "");
+                question1 = Number(question1);
+                if(question1 == 2){
+                    points += 2;
+                }
+
+                var question2 = prompt("Qual metodo estou utilizando para fazer estas perguntas: 1: alert() | 2: quest() | 3: prompt()", "");
+                question2 = Number(question2);
+                if(question2 == 3){
+                    points += 2;
+                }
+
+                var question3 = prompt("Qual a numeração deste dever: 1: 5 | 2: 6 | 3: 7", "");
+                question3 = Number(question3);
+                if(question3 == 1){
+                    points += 2;
+                }
+
+                alert("Você fez " + points + " pontos!");
+            }
+            {// PERGUNTA 10
+                var data = prompt("Qual a data de hoje?", "01/01/2019");
+                data = data.split("/");
+                for(var i = 0; i < data.length; i++){
+                    data[i] = Number(data[i]); 
+                }
+
+                data[0]++;
+                if(data[0] > 31){
+                    data[0] = 1;
+                    data[1]++;
+                }
+                if(data[1] > 12){
+                    data[0] = 1;
+                    data[1] = 1;
+                    data[2]++;
+                }
+
+                for(var i = 0; i < data.length; i++){
+                    if(String(data[i]).length == 1){
+                        data[i] = "0" + String(data[i]);
+                    } else {
+                        data[i] = String(data[i]);
+                    }
+                }
+
+                data = data[0] + "/" + data[1] + "/" + data[2];
+                alert("Amanhã será: " + data);
+            }
+
+        </script>
+    </body>
+</html>
