@@ -1,0 +1,155 @@
+<html>
+    <head></head>
+    <body>
+        <script>
+            // EX - 1
+            function checkNumbersValues(num1, num2){
+                if(num1 < num2){
+                    return -1;
+                } else if (num1 > num2){
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+
+            // EX - 2
+            function gerarFatorial(num) {
+                let msg = "";
+                let aux = 1;
+
+                for(let i = 1; i <= num; i++){
+                    aux *= i;
+                    if(aux == Infinity){
+                        resultado.innerText = "";
+                        message.innerHTML = "Ultrapassou o limite suportado pelo navegador. Tente um número menor.";
+                        break;
+                    }
+                    if(i == num){
+                        msg += i + "!";
+                        message.innerText = "Fatorial  = " + aux;
+                        resultado.innerText = msg;
+                        break;
+                    }
+                    msg += i + "! x " ;
+                }
+
+            }
+
+            // EX - 3
+            function juntarNumeros(num1, num2, num3){
+                return Number(String(num1) + String(num2) + String(num3));
+            }
+
+            // EX - 4
+            function calcularEx4(length, width){
+                if(length > 0 && width == 0){
+                    return length * length;
+                } else if (length == 0 && width > 0){
+                    return width * width;
+                } else if(length > 0 && width > 0){
+                    return length * width;
+                }
+            }
+
+            // EX - 5
+            function numberIsPerfect(num1){
+                var soma = 0;
+                for(var i = 1; i < num1; i++){
+                    if(num1%i==0){
+                        soma += num1/i; 
+                    }
+
+                }
+                return num1 == soma;
+            }
+
+            // EX - 6
+            function numberRangeIsPerfect(num1, num2){
+                var result = "";
+
+                var min = Math.min(num1, num2);
+                var max = Math.max(num1, num2);
+                for(var i = min; i < max; i++){
+                    if(numberIsPerfect(i)){
+                        if(result != ""){
+                            result += ", ";
+                        }
+                        result += i;
+                    }
+                }
+                return result;
+            }
+
+            // EX - 7
+            function getTime(){
+                var result = "";
+                var data = new Date();
+                result += dataDigitFormat(data.getHours());
+                result += ":";
+                result += dataDigitFormat(data.getMinutes());
+                result += ":";
+                result += dataDigitFormat(data.getSeconds());
+
+
+                return result;
+            }
+            
+            function dataDigitFormat(num){
+                if(String(num).length == 1){
+                    var temp = "0" + String(num);
+                    return temp;
+                } else {
+                    return num;
+                }
+            }
+            
+            // EX - 8
+            function timeToSeconds(){
+                var totalSeconds = 0;
+                var data = new Date();
+                totalSeconds += (data.getSeconds());
+                totalSeconds += (data.getMinutes()*60);
+                totalSeconds += (data.getHours()*60*60);
+                return totalSeconds;
+            }
+            
+            // EX - 9
+            function secondsToTime(totalSeconds){
+                var hours = 0;
+                var minutes = 0;
+                var seconds = 0;
+                
+                hours = Math.floor(totalSeconds/3600);
+                totalSeconds %= 3600;
+                
+                minutes = Math.floor(totalSeconds/60);
+                totalSeconds %= 60;
+                
+                seconds = totalSeconds;
+                return hours + ":" + minutes + ":" + seconds;
+            }
+            
+            // EX - 10
+            function diferencaDasDatas(seconds1, minutes1, hours1, seconds2, minutes2, hours2){
+                var seconds = 0;
+                var minutes = 0;
+                var hours = 0;
+                
+                var maxSeconds = Math.max(seconds1, seconds2);
+                var maxMinutes = Math.max(minutes1, minutes2);
+                var maxHours = Math.max(hours1, hours2);
+                
+                var minSeconds = Math.min(seconds1, seconds2);
+                var minMinutes = Math.min(minutes1, minutes2);
+                var minHours = Math.min(hours1, hours2);
+                
+                seconds = maxSeconds - minSeconds;
+                minutes = maxMinutes - minMinutes;
+                hours = maxHours - minHours;
+                return hours + ":" + minutes + ":" + seconds;
+            }
+            
+        </script>
+    </body>
+</html>
