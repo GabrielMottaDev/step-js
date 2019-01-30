@@ -1,7 +1,26 @@
 <html>
-    <head></head>
+    <head>
+        <style>
+            .show {
+                display: block;
+            }
+            .hide {
+                display: none;
+            }
+        </style>
+    </head>
     <body>
+        
+        <button onclick="test1()">Submit</button>
+        <div id="testar" class="hide">O valor é</div>
+        
         <script>
+            
+            function test1(){
+                var conteudo = document.getElementById("testar");
+                conteudo.className = "show";
+            }
+            
             // EX - 1
             function checkNumbersValues(num1, num2){
                 if(num1 < num2){
