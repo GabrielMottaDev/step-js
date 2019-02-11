@@ -18,7 +18,7 @@
             }
 
             .operations {
-                //display: none;
+                display: none;
                 padding: 15px;
                 margin: auto;
                 width: 300px;
@@ -53,6 +53,7 @@
                 font-size: 25pt;
                 padding: 5px;
                 margin-bottom: 15px;
+                text-indent: 8px;
             }
 
             .clean {
@@ -63,7 +64,7 @@
                 margin-left: 250px;
                 height: 48px;
                 width: 50px;
-                background: white;
+                background: transparent;
                 border: none;
                 display: none;
             }
@@ -90,7 +91,7 @@
                 if (value) {
                     var resultado = eval(value);
                     
-                    document.getElementById("operations").innerHTML += "<input type=\"button\" value=\"" + value + " = " + resultado +"\" onclick=\"rewind(this.value)\">"
+                    document.getElementById("operations").innerHTML += "<input type=\"button\" value=\"" + value + " = " + resultado + "\" onclick=\"rewind(this.value)\">"
                     document.getElementById("operations").classList.add("unvanish");
                     
                     document.getElementById("visor").value = resultado;
