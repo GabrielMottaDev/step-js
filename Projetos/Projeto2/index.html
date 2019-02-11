@@ -33,11 +33,35 @@
             padding: 5px;
             margin-bottom: 15px;
         }
+        
+        .clean {
+            position: absolute;
+            font-weight: bolder;
+            font-size: 25pt;
+            margin-top: 2px;
+            margin-left: 250px;
+            height: 48px;
+            width: 50px;
+            background: white;
+            border: none;
+            display: none;
+        }
+        
+        .unvanish {
+            display: block;
+        }
+        
     </style>
     <script>
 
         function insert(num) {
             document.getElementById("visor").value += num;
+            document.getElementById("clean").classList.add("unvanish");
+        }
+        
+        function clean(){
+            document.getElementById("visor").value = "";
+            document.getElementById("clean").classList.remove("unvanish");
         }
 
         function equal() {
@@ -54,6 +78,8 @@
                 insert(keyCode);
             } else if (keyCode == "=" || keyCode == "Enter") {
                 equal();
+            } else if (keyCode == "Backspace"){
+                clean();
             }
         });
 
@@ -63,7 +89,9 @@
 <body>
     <h2 style="text-align: center; margin-top: 20px;">Calculadora</h2>
     <div class="calculadora">
+        <input id="clean" class="button clean" type="button" value="X" onclick="clean()">
         <input id="visor" class="visor" disabled style="background: white;">
+        
         <table>
             <tr>
                 <td><input class="button" type="button" value="7" onclick="insert(7)"></td>
@@ -81,7 +109,7 @@
                 <td><input class="button" type="button" value="1" onclick="insert(1)"></td>
                 <td><input class="button" type="button" value="2" onclick="insert(2)"></td>
                 <td><input class="button" type="button" value="3" onclick="insert(3)"></td>
-                <td><input class="button" type="button" value="x" onclick="insert('*')"></td>
+                <td><input class="button" type="button" value="*" onclick="insert('*')"></td>
 
             </tr>
             <tr>
