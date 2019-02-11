@@ -1,0 +1,46 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <script>
+
+            class Employee {
+                constructor (name) {
+                    this.name = name;
+                }
+            }
+
+            class EmpTable {
+                constructor (employees){
+                    this.employees = employees;
+                }
+
+                getHtml () {
+                    var html = "";
+                    html += "<div>";
+                    html += "<h2>Employees</h2>";
+                    for(var employee in this.employees){
+                        employee = this.employees[employee];
+                        html += "<p>";
+                        html += employee.name;
+                        html += "</p>";
+                    }
+                    html += "</div>";
+                    return html;
+                }
+
+            }
+
+            var employees = [];
+            employees.push(new Employee("Rodrigo"));
+            employees.push(new Employee("Robson"));
+            employees.push(new Employee("Julia"));
+            employees.push(new Employee("Alexandra"));
+            employees.push(new Employee("Lucas"));
+            var table = new EmpTable(employees);
+            
+            document.body.innerHTML += table.getHtml();
+
+        </script>
+    </body>
+</html>

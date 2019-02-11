@@ -1,0 +1,70 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <a id="results">
+        </a>
+        <script>
+            class ExtendedDate extends Date {
+                constructor (){
+                    super();
+                }
+
+                getFormatDate() {
+                    return this.getDate() + "/" + (this.getMonth()+1);
+                }
+
+                isFuture (){
+                    var data = new Date();
+                    return (this >= data);
+                }
+
+                nextDate (){
+                    var data = this.getDate() + "/" + (this.getMonth()+1) + "/" + this.getFullYear();
+                    data = data.split("/");
+                    for(var i = 0; i < data.length; i++){
+                        data[i] = Number(data[i]); 
+                    }
+
+                    data[0]++;
+                    if(data[0] > 31){
+                        data[0] = 1;
+                        data[1]++;
+                    }
+                    if(data[1] > 12){
+                        data[0] = 1;
+                        data[1] = 1;
+                        data[2]++;
+                    }
+
+                    for(var i = 0; i < data.length; i++){
+                        if(String(data[i]).length == 1){
+                            data[i] = "0" + String(data[i]);
+                        } else {
+                            data[i] = String(data[i]);
+                        }
+                    }
+
+                    data = data[0] + "/" + data[1] + "/" + data[2];
+                    return data;
+                }
+
+                isLeap (){
+                    var ano = this.getFullYear();
+                    return ((ano%400==0||ano%4==0) && ano%100!=0);
+                }
+
+            }
+
+            var data = new ExtendedDate();
+            var data2 = new Date();
+            document.getElementById("results").innerHTML += data.getFormatDate();
+            document.getElementById("results").innerHTML += "<br>";
+            document.getElementById("results").innerHTML += data.isFuture();
+            document.getElementById("results").innerHTML += "<br>";
+            document.getElementById("results").innerHTML += data.nextDate();
+            document.getElementById("results").innerHTML += "<br>";
+            document.getElementById("results").innerHTML += data.isLeap();
+        </script>
+    </body>
+</html>

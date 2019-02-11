@@ -1,0 +1,44 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <a id="text-marker"></a>
+        <br><br>
+        <a id="text-refilling-marker"></a>
+        <script>
+            class Marker {
+                constructor (color, amount) {
+                    this.color = color;
+                    this.amount = amount;
+                }
+
+                print (id, str) {
+                    document.getElementById(id).style.color = this.color;
+                    for(var pos in str){
+                        var letra = str[pos];
+                        if (this.amount <= 0){
+                            break;
+                        }
+                        this.amount -= 0.5;
+                        document.getElementById(id).innerHTML += letra;
+                    }
+                }
+            }
+
+            class RefillingMarker extends Marker {
+                refill () {
+                    this.amount = 100.0;
+                }
+            }
+
+            var mark = new Marker("red", 100.0);
+            mark.print("text-marker", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id odio risus. Mauris ac magna eget velit porta tincidunt sed eget nisi. Maecenas condimentum sapien vel purus cursus, ac pretium tellus aliquet. In in eros efficitur, lacinia urna eu, sodales odio. Donec dignissim dolor at mauris finibus, non dignissim sapien facilisis. Duis condimentum sagittis fermentum. Donec ac tellus consectetur, tincidunt tortor id, euismod eros. Sed facilisis convallis bibendum. Morbi sed urna et ante facilisis ultrices. Duis nec viverra ante. Fusce eu libero ac enim auctor facilisis quis feugiat magna. Etiam ac mi ex. Integer justo lorem, porta id posuere eget, porttitor eget nulla.");
+            
+            var refillingMarker = new RefillingMarker("blue", 100.0);
+            refillingMarker.print("text-refilling-marker", "Donec posuere, odio sit amet elementum eleifend, risus est viverra dui, vel maximus nisl mauris volutpat neque. Nullam rutrum velit orci, nec mollis tellus dapibus et. Suspendisse rhoncus neque odio, a fringilla ante mollis nec. Pellentesque lacus nulla, pellentesque sit amet felis quis, eleifend euismod nisi. Praesent laoreet metus risus, in auctor magna pretium non. Cras suscipit pharetra enim, et sagittis eros accumsan quis. Aliquam feugiat nulla quis neque ullamcorper, eu pharetra dolor tempus. Cras sit amet orci a justo rutrum blandit eu id leo. Etiam vel neque non diam molestie mollis in eget dolor. Curabitur ac diam risus. Curabitur non tellus vehicula, ullamcorper mi eu, cursus mi. Donec vehicula, libero sit amet feugiat consectetur, nunc nibh sodales erat, sit amet consectetur lectus neque nec nunc. Nam eget porttitor ipsum. Integer eu sapien tempus, commodo purus ac, pharetra sapien. Suspendisse convallis nibh sed eros condimentum rhoncus. Mauris sem quam, auctor vel accumsan at, mollis vitae eros.");
+            refillingMarker.refill();
+            refillingMarker.print("text-refilling-marker", "Praesent vestibulum ultrices massa eu rhoncus. Ut vehicula, justo non dapibus dictum, velit tellus rhoncus orci, a tempus ante erat sit amet odio. Nam eleifend ac lacus eu tristique. Aenean porttitor justo eget leo sagittis, eget volutpat mi eleifend. Duis ut ultricies tortor, quis auctor diam. Mauris blandit scelerisque massa a tempus. Fusce commodo eleifend lorem vel vestibulum. Etiam libero nunc, lobortis ut turpis sit amet, porta imperdiet felis. Pellentesque pulvinar, magna eu scelerisque cursus, diam purus luctus neque, quis aliquam mauris est ut orci. Quisque non dui eu felis malesuada finibus. Etiam pellentesque turpis mi, at faucibus ex pretium vel. Integer blandit tincidunt velit, cursus tincidunt velit posuere a. Curabitur ut lacus vulputate, fringilla nisl et, sodales quam. Maecenas semper odio quis velit viverra, vitae eleifend sapien cursus. Donec ornare tortor non fermentum molestie. Etiam eget rutrum risus, lobortis venenatis enim.");
+
+        </script>
+    </body>
+</html>
