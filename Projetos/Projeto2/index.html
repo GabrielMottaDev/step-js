@@ -1,0 +1,98 @@
+<html>
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .calculadora {
+            padding: 15px;
+            margin: auto;
+            width: 300px;
+            height: auto;
+            background: blue;
+            margin-top: 20px;
+        }
+
+        .button {
+            margin-left: -2px;
+            width: 73px;
+            height: 60px;
+            font-size: 25pt;
+            margin-right: 2px;
+            margin-bottom: 2px;
+            cursor: pointer;
+        }
+
+        .visor {
+            width: 100%;
+            height: 50px;
+            font-size: 25pt;
+            padding: 5px;
+            margin-bottom: 15px;
+        }
+    </style>
+    <script>
+
+        function insert(num) {
+            document.getElementById("visor").value += num;
+        }
+
+        function equal() {
+            var value = document.getElementById("visor").value;
+            if (value) {
+                document.getElementById("visor").value = eval(value);
+            }
+
+        }
+
+        document.addEventListener("keydown", function(e) {
+            var keyCode = e.key;
+            if(keyCode == "0" || keyCode == "1" || keyCode == "2" || keyCode == "3" || keyCode == "4" || keyCode == "5" || keyCode == "6" || keyCode == "7" || keyCode == "8" || keyCode == "9" || keyCode == "-" || keyCode == "+" || keyCode == "." || keyCode == "/"){
+                insert(keyCode);
+            } else if (keyCode == "=" || keyCode == "Enter") {
+                equal();
+            }
+        });
+
+    </script>
+</head>
+
+<body>
+    <h2 style="text-align: center; margin-top: 20px;">Calculadora</h2>
+    <div class="calculadora">
+        <input id="visor" class="visor">
+        <table>
+            <tr>
+                <td><input class="button" type="button" value="7" onclick="insert(7)"></td>
+                <td><input class="button" type="button" value="8" onclick="insert(8)"></td>
+                <td><input class="button" type="button" value="9" onclick="insert(9)"></td>
+                <td><input class="button" type="button" value="-" onclick="insert('-')"></td>
+            </tr>
+            <tr>
+                <td><input class="button" type="button" value="4" onclick="insert(4)"></td>
+                <td><input class="button" type="button" value="5" onclick="insert(5)"></td>
+                <td><input class="button" type="button" value="6" onclick="insert(6)"></td>
+                <td><input class="button" type="button" value="+" onclick="insert('+')"></td>
+            </tr>
+            <tr>
+                <td><input class="button" type="button" value="1" onclick="insert(1)"></td>
+                <td><input class="button" type="button" value="2" onclick="insert(2)"></td>
+                <td><input class="button" type="button" value="3" onclick="insert(3)"></td>
+                <td><input class="button" type="button" value="x" onclick="insert('*')"></td>
+               
+            </tr>
+            <tr>
+                <td><input class="button" type="button" value="0" onclick="insert(0)"></td>
+                <td><input class="button" type="button" value="." onclick="insert('.')"></td>
+                <td><input class="button" type="button" value="/" onclick="insert('/')"></td>
+                <td><input class="button" type="button" value="=" onclick="equal()"></td>
+                
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
