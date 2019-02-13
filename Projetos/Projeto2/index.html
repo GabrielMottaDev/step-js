@@ -1,162 +1,89 @@
 <html>
 
     <head>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-            }
-
-            .calculadora {
-                padding: 15px;
-                margin: auto;
-                width: 300px;
-                height: auto;
-                background: darkgray;
-                margin-top: 20px;
-
-            }
-
-            .operations {
-                display: none;
-                padding: 15px;
-                margin: auto;
-                width: 300px;
-                height: auto;
-                background: darkgray;
-                margin-top: 20px;
-            }
-            
-            .operations > input {
-                width: 100%;
-                background: white;
-                text-indent: 15px;
-                text-align: left;
-                padding-top: 6px;
-                font-size: 20pt;
-                margin-bottom: 5px;
-            }
-
-            .button {
-                margin-left: -2px;
-                width: 73px;
-                height: 60px;
-                font-size: 25pt;
-                margin-right: 2px;
-                margin-bottom: 2px;
-                cursor: pointer;
-            }
-
-            .visor {
-                width: 100%;
-                height: 50px;
-                font-size: 25pt;
-                padding: 5px;
-                margin-bottom: 15px;
-                text-indent: 8px;
-            }
-
-            .clean {
-                position: absolute;
-                font-weight: bolder;
-                font-size: 25pt;
-                margin-top: 2px;
-                margin-left: 250px;
-                height: 48px;
-                width: 50px;
-                background: transparent;
-                border: none;
-                display: none;
-            }
-
-            .unvanish {
-                display: block;
-            }
-
-        </style>
-        <script>
-
-            function insert(num) {
-                document.getElementById("visor").value += num;
-                document.getElementById("clean").classList.add("unvanish");
-            }
-
-            function clean(){
-                document.getElementById("visor").value = "";
-                document.getElementById("clean").classList.remove("unvanish");
-            }
-
-            function equal() {
-                var value = document.getElementById("visor").value;
-                if (value) {
-                    var resultado = eval(value);
-                    
-                    document.getElementById("operations").innerHTML += "<input type=\"button\" value=\"" + value + " = " + resultado + "\" onclick=\"rewind(this.value)\">"
-                    document.getElementById("operations").classList.add("unvanish");
-                    
-                    document.getElementById("visor").value = resultado;
-                }
-
-            }
-            
-            function rewind(conta) {
-                conta = conta.split(" = ")[1];
-                document.getElementById("visor").value = conta;
-            }
-
-            document.addEventListener("keydown", function (e) {
-                var keyCode = e.key;
-                if (keyCode == "0" || keyCode == "1" || keyCode == "2" || keyCode == "3" || keyCode == "4" || keyCode == "5" || keyCode == "6" || keyCode == "7" || keyCode == "8" || keyCode == "9" || keyCode == "-" || keyCode == "+" || keyCode == "." || keyCode == "/" || keyCode == "*") {
-                    insert(keyCode);
-                } else if (keyCode == "=" || keyCode == "Enter") {
-                    equal();
-                } else if (keyCode == "Backspace"){
-                    clean();
-                }
-            });
-
-        </script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="styles/style.css" rel="stylesheet" type="text/css">
+        <script src="scripts/script.js"></script>
     </head>
 
     <body>
         <h2 style="text-align: center; margin-top: 20px;">Calculadora</h2>
-        <div id="calculadora" class="calculadora">
-            <input id="clean" class="button clean" type="button" value="X" onclick="clean()">
-            <input id="visor" class="visor" disabled style="background: white;">
+        <div class="calculadora" id="calculadora">
 
-            <table>
-                <tr>
-                    <td><input class="button" type="button" value="7" onclick="insert(7)"></td>
-                    <td><input class="button" type="button" value="8" onclick="insert(8)"></td>
-                    <td><input class="button" type="button" value="9" onclick="insert(9)"></td>
-                    <td><input class="button" type="button" value="-" onclick="insert('-')"></td>
-                </tr>
-                <tr>
-                    <td><input class="button" type="button" value="4" onclick="insert(4)"></td>
-                    <td><input class="button" type="button" value="5" onclick="insert(5)"></td>
-                    <td><input class="button" type="button" value="6" onclick="insert(6)"></td>
-                    <td><input class="button" type="button" value="+" onclick="insert('+')"></td>
-                </tr>
-                <tr>
-                    <td><input class="button" type="button" value="1" onclick="insert(1)"></td>
-                    <td><input class="button" type="button" value="2" onclick="insert(2)"></td>
-                    <td><input class="button" type="button" value="3" onclick="insert(3)"></td>
-                    <td><input class="button" type="button" value="*" onclick="insert('*')"></td>
 
-                </tr>
-                <tr>
-                    <td><input class="button" type="button" value="0" onclick="insert(0)"></td>
-                    <td><input class="button" type="button" value="." onclick="insert('.')"></td>
-                    <td><input class="button" type="button" value="/" onclick="insert('/')"></td>
-                    <td><input class="button" type="button" value="=" onclick="equal()"></td>
-                </tr>
-            </table>
+            <div id="simples" class="simples">
+                <input id="clean" class="button clean" type="button" value="X" onclick="clean()">
+                <input id="visor" class="visor" disabled style="background: white;">
+
+                <table>
+                    <tr>
+                        <td><input class="button" type="button" value="7" onclick="insert(7)"></td>
+                        <td><input class="button" type="button" value="8" onclick="insert(8)"></td>
+                        <td><input class="button" type="button" value="9" onclick="insert(9)"></td>
+                        <td><input class="button" type="button" value="-" onclick="insert('-')"></td>
+                    </tr>
+                    <tr>
+                        <td><input class="button" type="button" value="4" onclick="insert(4)"></td>
+                        <td><input class="button" type="button" value="5" onclick="insert(5)"></td>
+                        <td><input class="button" type="button" value="6" onclick="insert(6)"></td>
+                        <td><input class="button" type="button" value="+" onclick="insert('+')"></td>
+                    </tr>
+                    <tr>
+                        <td><input class="button" type="button" value="1" onclick="insert(1)"></td>
+                        <td><input class="button" type="button" value="2" onclick="insert(2)"></td>
+                        <td><input class="button" type="button" value="3" onclick="insert(3)"></td>
+                        <td><input class="button" type="button" value="*" onclick="insert('*')"></td>
+
+                    </tr>
+                    <tr>
+                        <td><input class="button" type="button" value="0" onclick="insert(0)"></td>
+                        <td><input class="button" type="button" value="." onclick="insert('.')"></td>
+                        <td><input class="button" type="button" value="/" onclick="insert('/')"></td>
+                        <td><input class="button" type="button" value="=" onclick="equal()"></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="ampliada" class="ampliada">
+                <table>
+                    <tr>
+                        <td><input class="button" type="button" value="%" onclick="insert('%')"></td>
+                        <td><input class="button" type="button" value="√" onclick="squareRoot()"></td>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                    </tr>
+                    <tr>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                    </tr>
+                    <tr>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                    </tr>
+                    <tr>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                    </tr>
+                    <tr>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                        <td><input class="button" type="button" value="" onclick=""></td>
+                    </tr>
+                </table>
+            </div>
         </div>
-        
+
+
         <div class="operations" id="operations">
-            
+
         </div>
-        
+
     </body>
 
 </html>
